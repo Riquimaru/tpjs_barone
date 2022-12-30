@@ -1,0 +1,40 @@
+/*Inicializacion*/
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  ul, ol {
+    list-style: none;
+  }
+  
+  a {
+    text-decoration: none;
+  }
+  
+  .row {
+    padding: 0px;
+    margin: 0px;
+  }
+  
+  /*Fin Inicializacion*/
+  /*Cuerpo*/
+  body {
+    background-color: rgb(73, 73, 73)
+  }
+
+  h1 {
+    color: white;
+    font-size: 3.5rem;
+  }
+  
+  h2 {
+    color: azure;
+    font-size: 1.5rem;
+  }
+
+  .container-md {
+    background-color: rgba(0, 0, 0, 0.726);
+  }
+  /*Fin Cuerpo*/
