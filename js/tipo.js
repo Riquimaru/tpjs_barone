@@ -96,12 +96,19 @@ while (vida1 > 0 && vida2 > 0){
         vida2 = vida2 - atk1;
     } else if (turno == 2 && p1efectivo == 1 ){
         vida2 = vida2 - atkefe(atk2);
+        alert ("¡El ataque "+p1atk2n+" es muy efectivo!")
     } else if (turno == 2 && p1efectivo == 2){
        vida2 = vida2 - atknoefe(atk2);
+       alert ("El ataque "+p1atk2n+" no es muy efectivo...")
     } else if (turno == 2 && p1efectivo == 3) {
         vida2 = vida2 - atk2;
     } else {
         alert("Ataque incorrecto");
+    }
+
+    if (vida2 <= 0){
+        alert("Segundo Pokemon: "+poke2+" Vida restante: "+vida2);
+        break;
     }
 
     alert("Segundo Pokemon: "+poke2+" Vida restante: "+vida2);
@@ -111,8 +118,10 @@ while (vida1 > 0 && vida2 > 0){
         vida1 = vida1 - atk1;
     } else if (turno2 == 2 && p2efectivo == 1 ){
         vida1 = vida1 - atkefe(atk2);
+        alert ("¡El ataque "+p2atk2n+" es muy efectivo!")
     } else if (turno2 == 2 && p2efectivo == 2){
        vida1 = vida1 - atknoefe(atk2);
+       alert ("El ataque "+p2atk2n+" no es muy efectivo...")
     } else if (turno2 == 2 && p2efectivo == 3) {
         vida1 = vida1 - atk2;
     } else {
