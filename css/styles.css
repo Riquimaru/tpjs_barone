@@ -21,7 +21,9 @@
   /*Fin Inicializacion*/
   /*Cuerpo*/
   body {
-    background-color: rgb(73, 73, 73)
+    background-color: rgb(255, 255, 255);
+    background-image: url(.././img/back.png);
+
   }
 
   h1 {
@@ -34,7 +36,8 @@
     font-size: 1.5rem;
   }
 
-  .container-md {
-    background-color: rgba(0, 0, 0, 0.726);
+  .container {
+    background-color: rgba(138, 23, 161, 0.945);
+    background-image: linear-gradient(to right, rgba(151, 39, 132, 0.768627451) rgba(112, 18, 104, 0.623) b2, rgba(114, 24, 106, 0.5960784314));
   }
   /*Fin Cuerpo*/
