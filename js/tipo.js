@@ -187,3 +187,4 @@ for (let index = 0; index < logPoke1.length; index++) {
     console.log(element);
     
 }
+//fin
