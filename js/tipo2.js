@@ -154,98 +154,100 @@ function Clog() {
 }
 
 function batalla() {
-        const logP = document.getElementById('log');
-        const atq1 = document.getElementById("atq1");
-        const atq2 = document.getElementById("atq2");
-        atq1.addEventListener("click", turnoA);
-        atq2.addEventListener("click", turnoB);
+    const logP = document.getElementById('log');
+    const atq1 = document.getElementById("atq1");
+    const atq2 = document.getElementById("atq2");
+    atq1.addEventListener("click", turnoA);
+    atq2.addEventListener("click", turnoB);
 
-        const np = document.createElement('p');
-        np.innerHTML = `Pokemon 1 ${pokemon1.nombre} VS Pokemon 2 ${pokemon2.nombre}</p><hr><p>COMIENZA EL DUELO</p><hr>`;
-        logP.insertAdjacentElement('beforeend', np);
+    const np = document.createElement('p');
+    np.innerHTML = `Pokemon 1 ${pokemon1.nombre} VS Pokemon 2 ${pokemon2.nombre}</p><hr><p>COMIENZA EL DUELO</p><hr>`;
+    logP.insertAdjacentElement('beforeend', np);
 
-        function turnoA() {
+    function turnoA() {
+        if (pokemon1.vida > 0 && pokemon2.vida > 0) {
             pokemon2.vida = pokemon2.vida - placaje(pokemon1.atk1);
             const np = document.createElement('p');
             np.innerHTML = `Pokemon 1 <b>${pokemon1.nombre}</b> uso <b>${pokemon1.natk1}</b> Daño: ${placaje(pokemon1.atk1)}<p>Pokemon 2 vida restante ${pokemon2.vida}</p><hr>`;
             logP.insertAdjacentElement('beforeend', np);
-            if (pokemon2.vida > 0){
-            turno2 = getRandomInt(1, 3);
+            if (pokemon2.vida > 0) {
+                turno2 = getRandomInt(1, 3);
             }
-            if (turno2 == 1) {
+            if (turno2 == 1 && pokemon2.vida > 0) {
                 pokemon1.vida = pokemon1.vida - placaje(pokemon2.atk1);
                 const np = document.createElement('p');
                 np.innerHTML = `Pokemon 2 <b>${pokemon2.nombre}</b> uso <b>${pokemon2.natk1}</b> Daño: ${placaje(pokemon2.atk1)}<p>Pokemon 1 vida restante ${pokemon1.vida}</p><hr>`;
                 logP.insertAdjacentElement('beforeend', np);
                 var turno2 = 0;
-            } else if (turno2 == 2) {
+            }
+                if (turno2 == 2 && pokemon2.vida > 0) {
                 pokemon1.vida = pokemon1.vida - ae(pokemon2.tipo, pokemon1.tipo, pokemon2.atk2);
                 const np = document.createElement('p');
                 np.innerHTML = `Pokemon 2 <b>${pokemon2.nombre}</b> uso <b>${pokemon2.natk2}</b> Daño: ${ae(pokemon2.tipo, pokemon2.tipo, pokemon2.atk2)}<p>Pokemon 1 vida restante: ${pokemon1.vida}</p><hr>`;
                 logP.insertAdjacentElement('beforeend', np);
                 var turno2 = 0;
-                if (pokemon1.vida <= 0) {
-                    pokemon1.vida = 0;
-                    const np = document.createElement('p')
-                    np.innerHTML = `Pokemon 1 <b>${pokemon1.nombre}</b> no puede seguir luchando`;
-                    logP.insertAdjacentElement('beforeend', np);
                 }
+                if (pokemon2.vida <= 0) {
+                    const np = document.createElement('p')
+                    np.innerHTML = `Ganador Pokemon 1 <b>${pokemon1.nombre}</b>`;
+                    np.innerHTML = `Pokemon 2 <b>${pokemon2.nombre}</b> no puede seguir luchando`;
+                    logP.insertAdjacentElement('beforeend', np);
+                } else if (pokemon1.vida <= 0) {
+                    const np = document.createElement('p')
+                    np.innerHTML = `Ganador Pokemon 2 <b>${pokemon2.nombre}</b>`;
+                    np.innerHTML = `Pokemon 1 <b>${pokemon1.nombre}</b> no puede seguir luchando`;
+                     logP.insertAdjacentElement('beforeend', np);
             }
-    
-            if (pokemon2.vida <= 0) {
-                const np = document.createElement('p')
-                np.innerHTML = `Ganador Pokemon 1 <b>${pokemon1.nombre}</b>`;
-            } else if (pokemon1.vida <= 0) {
-                alert("Ganador segundo Pokemon: " + pokemon2.nombre);
-                const np = document.createElement('p')
-                np.innerHTML = `Ganador Pokemon 2 <b>${pokemon2.nombre}</b>`;
-            }
+        } else {
+            const np = document.createElement('p')
+            np.innerHTML = `DUELO FINALIZADO`;
+            logP.insertAdjacentElement('beforeend', np);
         }
-        }
-        
-        function turnoB() {
+    }
+
+
+    function turnoB() {
+        if (pokemon1.vida > 0 && pokemon2.vida > 0) {
             const logP = document.getElementById('log');
             pokemon2.vida = pokemon2.vida - ae(pokemon1.tipo, pokemon2.tipo, pokemon1.atk2);
             const np = document.createElement('p');
             np.innerHTML = `Pokemon 1 <b>${pokemon1.nombre}</b> uso <b>${pokemon1.natk2}</b> Daño: ${ae(pokemon1.tipo, pokemon2.tipo, pokemon1.atk2)}<p>Pokemon 2 vida restante: ${pokemon2.vida}</p><hr>`;
             logP.insertAdjacentElement('beforeend', np);
-            if (pokemon2.vida > 0){
+            if (pokemon2.vida > 0) {
                 turno2 = getRandomInt(1, 3);
-                }
-            if (turno2 == 1) {
+            }
+            if (turno2 == 1 && pokemon2.vida) {
                 pokemon1.vida = pokemon1.vida - placaje(pokemon2.atk1);
                 const np = document.createElement('p');
                 np.innerHTML = `Pokemon 2 <b>${pokemon2.nombre}</b> uso <b>${pokemon2.natk1}</b> Daño: ${placaje(pokemon2.atk1)}<p>Pokemon 1 vida restante ${pokemon1.vida}</p><hr>`;
                 logP.insertAdjacentElement('beforeend', np);
                 var turno2 = 0;
-            } else if (turno2 == 2) {
+            }
+            if (turno2 == 2 && pokemon2.vida) {
                 pokemon1.vida = pokemon1.vida - ae(pokemon2.tipo, pokemon1.tipo, pokemon2.atk2);
                 const np = document.createElement('p');
                 np.innerHTML = `Pokemon 2 <b>${pokemon2.nombre}</b> uso <b>${pokemon2.natk2}</b> Daño: ${ae(pokemon2.tipo, pokemon2.tipo, pokemon2.atk2)}<p>Pokemon 1 vida restante: ${pokemon1.vida}</p><hr>`;
                 logP.insertAdjacentElement('beforeend', np);
                 var turno2 = 0;
-                if (pokemon1.vida <= 0) {
-                    pokemon1.vida = 0;
-                    const np = document.createElement('p')
-                    np.innerHTML = `Pokemon 1 <b>${pokemon1.nombre}</b> no puede seguir luchando`;
-                    logP.insertAdjacentElement('beforeend', np);
-                }
             }
-    
             if (pokemon2.vida <= 0) {
                 const np = document.createElement('p')
                 np.innerHTML = `Ganador Pokemon 1 <b>${pokemon1.nombre}</b>`;
+                np.innerHTML = `Pokemon 2 <b>${pokemon2.nombre}</b> no puede seguir luchando`;
+                logP.insertAdjacentElement('beforeend', np);
             } else if (pokemon1.vida <= 0) {
                 const np = document.createElement('p')
                 np.innerHTML = `Ganador Pokemon 2 <b>${pokemon2.nombre}</b>`;
-            }
-            if (pokemon2.vida <= 0) {
-                pokemon2.vida = 0;
-                const np = document.createElement('p')
-                np.innerHTML = `Pokemon 2 <b>${pokemon2.nombre}</b> no puede seguir luchando`;
+                np.innerHTML = `Pokemon 1 <b>${pokemon1.nombre}</b> no puede seguir luchando`;
                 logP.insertAdjacentElement('beforeend', np);
             }
+        } else {
+            const np = document.createElement('p')
+            np.innerHTML = `DUELO FINALIZADO`;
+            logP.insertAdjacentElement('beforeend', np);
         }
+    }
+}
 
 
 //fin
