@@ -40,4 +40,41 @@
     background-color: rgba(138, 23, 161, 0.945);
     background-image: linear-gradient(to right, rgba(151, 39, 132, 0.768627451) rgba(112, 18, 104, 0.623) b2, rgba(114, 24, 106, 0.5960784314));
   }
+
+  #Bulba, #Char, #Squi{
+    border-style: solid;
+    border-color: antiquewhite;
+  }
+
+  #Bulba:hover, #Char:hover, #Squi:hover{
+    background-color: white;
+    border-color: black;
+    color: black;
+  }
+
+  #duelo{
+    border-style: solid;
+    border-color: black;
+    border-radius: 10px;
+  }
+
+  #pok1, #pok2{
+    color: aliceblue;
+    border-style: dashed;
+    border-color: aliceblue;
+    margin: 3px;
+    padding: 2px;
+  }
+
+  #pok1 img, #pok2 img{
+    width: 65%;
+    height: auto;
+  }
+
+  #log {
+    color: antiquewhite;
+    margin: 3px;
+    border-style: solid;
+    border-color: crimson;
+  }
   /*Fin Cuerpo*/
