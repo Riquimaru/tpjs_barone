@@ -1,85 +1,52 @@
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/bootstrap.min.css">
-    <link rel="stylesheet" href="./css/styles.css">
-    <title>TP1 Barone</title>
-</head>
-<body>
-    <main>
-        <section class="container">
-          <div class="row p-3 mb-2 bg-dark-subtle text-emphasis-dark">
-            <h1 class="text-center">Pokémon</h1>
-            <h2>Tipos de Pokémon, con sus ventajas y desventajas</h2><br><br>
-            <div class="col-12 col-md-4">
-                <div class="card text-bg-success h-100 p-2" style="width: 18rem;">
-                    <img src="./img/bulb.png" class="card-img-top" alt="Bulbasaur">
-                    <div class="card-body">
-                    <p class="card-text">Bulbasaur es un Pokémon cuadrúpedo de color verde y manchas más oscuras de formas geométricas. Su
-                        cabeza representa cerca de un tercio de su cuerpo. En su frente se ubican tres manchas que pueden cambiar
-                        dependiendo del ejemplar. Tiene orejas pequeñas y puntiagudas. Sus ojos son grandes y de color rojo. Las patas son
-                        cortas con tres garras cada una.</p>
-                    </div>
-                    <input type="button" class="btn btn-success" id="Bulba" value="Bulbasaur">
-                  </div>
-            </div>
-            <div class="col-12 col-md-4">
-                <div class="card text-bg-danger h-100 p-2" style="width: 18rem;">
-                    <img src="./img/char.png" class="card-img-top" alt="Charmander">
-                    <div class="card-body">
-                    <p class="card-text">Charmander es un pequeño lagarto bípedo. Sus características de fuego son resaltadas por su color de piel anaranjado y
-                    su cola con la punta envuelta en llamas. Charmander, como sus evoluciones Charmeleon y Charizard, tiene una pequeña
-                    llama en la punta de su cola.</p>
-                    </div>
-                    <input type="button" class = "btn btn-danger" id="Char" value="Charmander">
-                  </div>
-            </div>
-            <div class="col-12 col-md-4">
-                <div class="card text-bg-primary h-100 p-2" style="width: 18rem;">
-                    <img src="./img/squi.png" class="card-img-top" alt="Squirtle">
-                    <div class="card-body">
-                    <p class="card-text">Squirtle es una de las especies más difíciles de encontrar. Habita tanto aguas dulces como marinas, preferiblemente
-                    zonas bastante profundas. Son pequeñas tortugas color celeste con caparazones color café; o rojas en algunos casos, con
-                    una cola enrollada que los distingue..</p>
-                    </div>
-                    <input type="button" class="btn btn-primary" id="Squi" value="Squirtle">
-                  </div>
-            </div>
-          </div>
-        </section>
 
-      <section class="container-fluid">
-        <div class="row p-3 mb-2">
-        <div class="col-12 text-center">
-          <input type="button" class="btn btn-warning btn-lg btn-block" id="duelo" value="¡Duelo!">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/styles.css">
+  <title>TP Barone - Registro entrenador</title>
+</head>
+
+<body>
+  <main>
+    <section id="registro" class="container text-light">
+      <h2>REGISTRO ENTRENADOR POKEMON</h2>
+      <div class="row justify-content-around">
+        <div class="col-6">
+          <form action="./duelo.html">
+            <div class="form-group mb-3">
+              <label for="nombreP">Nombre</label>
+              <input type="text" class="form-control" id="nombreP" placeholder="NOMBRE">
+            </div>
+            <div class="form-group mb-3">
+              <label for="apeP">Apellido</label>
+              <input type="text" class="form-control" id="apeP" placeholder="APELLIDO">
+            </div>
+            <div class="form-check">
+              <p>Genero:</p>
+              <input class="form-check-input" type="radio" name="genP" id="hombreP" value="Hombre">
+              <label class="form-check-label" for="hombreP">
+                Hombre
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="form-check-input" type="radio" name="genP" id="mujerP" value="Mujer">
+              <label class="form-check-label" for="mujerP">
+                Mujer
+              </label>
+            </div>
+            <div class="col-12 text-center mb-3">
+              <button type="submit" id="btnReg" class="btn btn-primary text-center">Registrar entrenador</button>
+            </div>
+          </form>
         </div>
       </div>
-      </section>
-
-      <section class="container">
-        <div class="row justify-content-around">
-          <div class="col-12 col-md-3 text-center m-2" id="pok1">
-          </div>
-          <div class="col-12 col-md-4 text-center m-2" id="log">
-          </div>
-          <div class="col-12 col-md-3 text-center m-2" id="pok2">
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-1 m-2">
-            <input type="button" value="Ataque 1" id="atq1" class="btn btn-secondary btn-sm">
-          </div>
-          <div class="col-1 m-2">
-            <input type="button" value="Ataque 2" id="atq2" class="btn btn-secondary btn-sm">
-          </div>
-        </div>
-      </section>
-
-      </main>
-    <script src="./js/bootstrap.min.js"></script>
-    <script src="./js/tipo2.js"></script>  
+    </section>
+  </main>
+  <script src="./js/bootstrap.min.js"></script>
+  <script src="./js/reg.js"></script>
 </body>
 
 </html>

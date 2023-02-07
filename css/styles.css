@@ -30,6 +30,12 @@
     color: white;
     font-size: 3.5rem;
   }
+
+  #registro h2{
+    color: whitesmoke;
+    text-align: center;
+    padding: 3px;
+  }
   
   h2 {
     color: azure;
@@ -39,6 +45,29 @@
   .container {
     background-color: rgba(138, 23, 161, 0.945);
     background-image: linear-gradient(to right, rgba(151, 39, 132, 0.768627451) rgba(112, 18, 104, 0.623) b2, rgba(114, 24, 106, 0.5960784314));
+  }
+
+  #entr{
+    color: white;
+    text-align: start;
+    border-style: dotted;
+    border-color: beige;
+    margin-bottom: 5px;
+  }
+
+  #entr h2{
+    text-align: center;
+  }
+
+#entpic{
+  text-align: end;
+}
+
+  #entpic img{
+    width: 60%;
+    height: auto;
+    border-style: solid;
+    border-color: black;
   }
 
   #Bulba, #Char, #Squi{

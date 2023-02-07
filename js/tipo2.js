@@ -12,6 +12,22 @@ class Pokeobj {
 }
 // Fin Objeto
 
+//Entrenador
+
+const entren = localStorage.getItem('Entrenador');
+const entjson = JSON.parse(entren);
+
+entrhtml = document.getElementById("entr");
+entrhtml.innerHTML = `<h2>DATOS </h2><p>Nombre: ${entjson.nombre}</p><p>Apellido: ${entjson.apellido}</p><p>Genero: ${entjson.genero}</p>`;
+
+enpic = document.getElementById("entpic");
+
+if (entjson.genero === "Hombre") {
+    enpic.innerHTML = `<img src="./img/entH.png">`
+} else if (entjson.genero === "Mujer") {
+    enpic.innerHTML = `<img src="./img/entM.png">`
+}
+
 // Elección Primer Pokemon
 
 let p1 = document.querySelector("#Bulba");
@@ -74,11 +90,6 @@ function poke2() {
 }
 // Fin Random2
 
-
-// Calcula ataque efectivo o no
-function atkefe(atk2) {
-    return atk2 * 1.5;
-}
 
 function atknoefe(atk2) {
     return atk2 / 1.5;
@@ -180,23 +191,23 @@ function batalla() {
                 logP.insertAdjacentElement('beforeend', np);
                 var turno2 = 0;
             }
-                if (turno2 == 2 && pokemon2.vida > 0) {
+            if (turno2 == 2 && pokemon2.vida > 0) {
                 pokemon1.vida = pokemon1.vida - ae(pokemon2.tipo, pokemon1.tipo, pokemon2.atk2);
                 const np = document.createElement('p');
                 np.innerHTML = `Pokemon 2 <b>${pokemon2.nombre}</b> uso <b>${pokemon2.natk2}</b> Daño: ${ae(pokemon2.tipo, pokemon2.tipo, pokemon2.atk2)}<p>Pokemon 1 vida restante: ${pokemon1.vida}</p><hr>`;
                 logP.insertAdjacentElement('beforeend', np);
                 var turno2 = 0;
-                }
-                if (pokemon2.vida <= 0) {
-                    const np = document.createElement('p')
-                    np.innerHTML = `Ganador Pokemon 1 <b>${pokemon1.nombre}</b>`;
-                    np.innerHTML = `Pokemon 2 <b>${pokemon2.nombre}</b> no puede seguir luchando`;
-                    logP.insertAdjacentElement('beforeend', np);
-                } else if (pokemon1.vida <= 0) {
-                    const np = document.createElement('p')
-                    np.innerHTML = `Ganador Pokemon 2 <b>${pokemon2.nombre}</b>`;
-                    np.innerHTML = `Pokemon 1 <b>${pokemon1.nombre}</b> no puede seguir luchando`;
-                     logP.insertAdjacentElement('beforeend', np);
+            }
+            if (pokemon2.vida <= 0) {
+                const np = document.createElement('p')
+                np.innerHTML = `Ganador Pokemon 1 <b>${pokemon1.nombre}</b>`;
+                np.innerHTML = `Pokemon 2 <b>${pokemon2.nombre}</b> no puede seguir luchando`;
+                logP.insertAdjacentElement('beforeend', np);
+            } else if (pokemon1.vida <= 0) {
+                const np = document.createElement('p')
+                np.innerHTML = `Ganador Pokemon 2 <b>${pokemon2.nombre}</b>`;
+                np.innerHTML = `Pokemon 1 <b>${pokemon1.nombre}</b> no puede seguir luchando`;
+                logP.insertAdjacentElement('beforeend', np);
             }
         } else {
             const np = document.createElement('p')
