@@ -14,8 +14,10 @@ class Pokeobj {
 
 //Entrenador
 
-let tf = 0;
+let tf = 0; //Se usa para ataques efectivos o no efectivos
 
+
+//Toma los datos de registro
 const entren = localStorage.getItem('Entrenador');
 const entjson = JSON.parse(entren);
 
@@ -29,6 +31,8 @@ if (entjson.genero === "Hombre") {
 } else if (entjson.genero === "Mujer") {
     enpic.innerHTML = `<img src="./img/entM.png">`
 }
+
+// Fin perfil entrenador
 
 // Elección Primer Pokemon
 
@@ -92,47 +96,45 @@ function poke2() {
 }
 // Fin Random2
 
-
-function atknoefe(atk2) {
-    return atk2 / 1.5;
-}
-// Fin Cálculo
-
-// Random para Poke2
+// Random para eleccion ataque Poke2
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min);
 }
-// Fin Random
+// Fin Random2
 
-// Placaje
+// Placaje/ataque 1
 function placaje(pla) {
     var tf = 0;
     return pla * 1;
 }
 
-// Efectivo o no
+// Efectivo o no mensaje
 
-function msjefe(tf){
-    if (tf == 2){
-const logP = document.getElementById('log');
-    const np = document.createElement('p');
-    np.innerHTML = `<b>EL ATAQUE ES MUY EFECTIVO</b>`;
-    logP.insertAdjacentElement('beforeend', np);
-}
-}
-
-
-function msjnoefe(tf){
-    if (tf == 1){
-    const logP = document.getElementById('log');
-    const np = document.createElement('p');
-    np.innerHTML = `<b>EL ATAQUE NO ES MUY EFECTIVO</b>`;
-    logP.insertAdjacentElement('beforeend', np);
-}
+function msjefe(tf) {
+    if (tf == 2) {
+        const logP = document.getElementById('log');
+        const np = document.createElement('p');
+        np.innerHTML = `<hr><b>EL ATAQUE ES MUY EFECTIVO</b>`;
+        logP.insertAdjacentElement('beforeend', np);
+    }
 }
 
+
+function msjnoefe(tf) {
+    if (tf == 1) {
+        const logP = document.getElementById('log');
+        const np = document.createElement('p');
+        np.innerHTML = `<hr><b>EL ATAQUE NO ES MUY EFECTIVO</b>`;
+        logP.insertAdjacentElement('beforeend', np);
+    }
+}
+
+//Fin efectivo o no mensaje
+
+
+//Calculo daño ataque 2
 function ae(t1, t2, atk) {
     if (t1 == "Hierba") {
         if (t2 == "Hierba") {
@@ -182,9 +184,11 @@ function ae(t1, t2, atk) {
     return atk;
 }
 
-// fin
+// fin ataque2
 
-function atkp2(t){
+//Funciones de ataque 1 y 2 de poke2
+
+function atkp2(t) {
     const logP = document.getElementById('log');
     if (t == 1 && pokemon2.vida > 0) {
         pokemon1.vida = pokemon1.vida - placaje(pokemon2.atk1);
@@ -201,6 +205,10 @@ function atkp2(t){
         logP.insertAdjacentElement('beforeend', np);
     }
 }
+
+//fin ataques poke2
+
+//dom y funcion de batalla
 
 duelo = document.getElementById("duelo");
 
@@ -219,6 +227,9 @@ function batalla() {
     const atq2 = document.getElementById("atq2");
     atq1.addEventListener("click", turnoA);
     atq2.addEventListener("click", turnoB);
+
+    atq1.value = `${pokemon1.natk1}`;
+    atq2.value = `${pokemon1.natk2}`;
 
     const np = document.createElement('p');
     np.innerHTML = `Pokemon 1 ${pokemon1.nombre} VS Pokemon 2 ${pokemon2.nombre}</p><hr><p>COMIENZA EL DUELO</p><hr>`;
@@ -247,7 +258,7 @@ function batalla() {
             }
         } else {
             const np = document.createElement('p')
-            np.innerHTML = `DUELO FINALIZADO`;
+            np.innerHTML = `<b>DUELO FINALIZADO</b>`;
             logP.insertAdjacentElement('beforeend', np);
         }
     }
@@ -262,6 +273,7 @@ function batalla() {
             const np = document.createElement('p');
             np.innerHTML = `Pokemon 1 <b>${pokemon1.nombre}</b> uso <b>${pokemon1.natk2}</b> Daño: ${ae(pokemon1.tipo, pokemon2.tipo, pokemon1.atk2)}<p>Pokemon 2 vida restante: ${pokemon2.vida}</p><hr>`;
             logP.insertAdjacentElement('beforeend', np);
+            tf = 0;
             if (pokemon2.vida > 0) {
                 turno2 = getRandomInt(1, 3);
                 atkp2(turno2);
@@ -279,7 +291,7 @@ function batalla() {
             }
         } else {
             const np = document.createElement('p')
-            np.innerHTML = `DUELO FINALIZADO`;
+            np.innerHTML = `<b>DUELO FINALIZADO</b>`;
             logP.insertAdjacentElement('beforeend', np);
         }
     }

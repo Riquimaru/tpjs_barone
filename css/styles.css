@@ -31,20 +31,16 @@
     font-size: 3.5rem;
   }
 
-  #registro h2{
-    color: whitesmoke;
-    text-align: center;
-    padding: 3px;
-  }
-  
   h2 {
     color: azure;
     font-size: 1.5rem;
+    text-align: center;
   }
 
-  .container {
+  #container {
     background-color: rgba(138, 23, 161, 0.945);
     background-image: linear-gradient(to right, rgba(151, 39, 132, 0.768627451) rgba(112, 18, 104, 0.623) b2, rgba(114, 24, 106, 0.5960784314));
+    border-radius: 25px;
   }
 
   #entr{
@@ -60,7 +56,7 @@
   }
 
 #entpic{
-  text-align: end;
+  text-align: center;
 }
 
   #entpic img{
