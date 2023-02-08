@@ -14,8 +14,6 @@ class Pokeobj {
 
 //Entrenador
 
-let tf = 0;
-
 const entren = localStorage.getItem('Entrenador');
 const entjson = JSON.parse(entren);
 
@@ -108,59 +106,33 @@ function getRandomInt(min, max) {
 
 // Placaje
 function placaje(pla) {
-    var tf = 0;
     return pla * 1;
 }
 
 // Efectivo o no
 
-function msjefe(tf){
-    if (tf == 2){
-const logP = document.getElementById('log');
-    const np = document.createElement('p');
-    np.innerHTML = `<b>EL ATAQUE ES MUY EFECTIVO</b>`;
-    logP.insertAdjacentElement('beforeend', np);
-}
-}
-
-
-function msjnoefe(tf){
-    if (tf == 1){
-    const logP = document.getElementById('log');
-    const np = document.createElement('p');
-    np.innerHTML = `<b>EL ATAQUE NO ES MUY EFECTIVO</b>`;
-    logP.insertAdjacentElement('beforeend', np);
-}
-}
-
 function ae(t1, t2, atk) {
     if (t1 == "Hierba") {
         if (t2 == "Hierba") {
             atk = atk;
-            tf = 0;
         }
         if (t2 == "Fuego") {
             atk = Math.trunc(atk / 1.5);
-            tf = 1;
         }
         if (t2 == "Agua") {
             atk = Math.trunc(atk * 1.5);
-            tf = 2;
         }
     }
 
     if (t1 == "Fuego") {
         if (t2 == "Hierba") {
             atk = Math.trunc(atk * 1.5);
-            tf = 2;
         }
         if (t2 == "Fuego") {
             atk = atk;
-            tf = 0;
         }
         if (t2 == "Agua") {
             atk = Math.trunc(atk / 1.5);
-            tf = 1;
         }
 
     }
@@ -168,15 +140,12 @@ function ae(t1, t2, atk) {
     if (t1 == "Agua") {
         if (t2 == "Hierba") {
             atk = Math.trunc(atk / 1.5);
-            tf = 1;
         }
         if (t2 == "Fuego") {
             atk = Math.trunc(atk * 1.5);
-            tf = 2;
         }
         if (t2 == "Agua") {
             atk = atk;
-            tf = 0;
         }
     }
     return atk;
@@ -185,21 +154,7 @@ function ae(t1, t2, atk) {
 // fin
 
 function atkp2(t){
-    const logP = document.getElementById('log');
-    if (t == 1 && pokemon2.vida > 0) {
-        pokemon1.vida = pokemon1.vida - placaje(pokemon2.atk1);
-        const np = document.createElement('p');
-        np.innerHTML = `Pokemon 2 <b>${pokemon2.nombre}</b> uso <b>${pokemon2.natk1}</b> Daño: ${placaje(pokemon2.atk1)}<p>Pokemon 1 vida restante ${pokemon1.vida}</p><hr>`;
-        logP.insertAdjacentElement('beforeend', np);
-    }
-    if (t == 2 && pokemon2.vida > 0) {
-        pokemon1.vida = pokemon1.vida - ae(pokemon2.tipo, pokemon1.tipo, pokemon2.atk2);
-        msjefe(tf);
-        msjnoefe(tf);
-        const np = document.createElement('p');
-        np.innerHTML = `Pokemon 2 <b>${pokemon2.nombre}</b> uso <b>${pokemon2.natk2}</b> Daño: ${ae(pokemon2.tipo, pokemon2.tipo, pokemon2.atk2)}<p>Pokemon 1 vida restante: ${pokemon1.vida}</p><hr>`;
-        logP.insertAdjacentElement('beforeend', np);
-    }
+    
 }
 
 duelo = document.getElementById("duelo");
@@ -232,7 +187,20 @@ function batalla() {
             logP.insertAdjacentElement('beforeend', np);
             if (pokemon2.vida > 0) {
                 turno2 = getRandomInt(1, 3);
-                atkp2(turno2);
+            }
+            if (turno2 == 1 && pokemon2.vida > 0) {
+                pokemon1.vida = pokemon1.vida - placaje(pokemon2.atk1);
+                const np = document.createElement('p');
+                np.innerHTML = `Pokemon 2 <b>${pokemon2.nombre}</b> uso <b>${pokemon2.natk1}</b> Daño: ${placaje(pokemon2.atk1)}<p>Pokemon 1 vida restante ${pokemon1.vida}</p><hr>`;
+                logP.insertAdjacentElement('beforeend', np);
+                var turno2 = 0;
+            }
+            if (turno2 == 2 && pokemon2.vida > 0) {
+                pokemon1.vida = pokemon1.vida - ae(pokemon2.tipo, pokemon1.tipo, pokemon2.atk2);
+                const np = document.createElement('p');
+                np.innerHTML = `Pokemon 2 <b>${pokemon2.nombre}</b> uso <b>${pokemon2.natk2}</b> Daño: ${ae(pokemon2.tipo, pokemon2.tipo, pokemon2.atk2)}<p>Pokemon 1 vida restante: ${pokemon1.vida}</p><hr>`;
+                logP.insertAdjacentElement('beforeend', np);
+                var turno2 = 0;
             }
             if (pokemon2.vida <= 0) {
                 const np = document.createElement('p')
@@ -257,14 +225,25 @@ function batalla() {
         if (pokemon1.vida > 0 && pokemon2.vida > 0) {
             const logP = document.getElementById('log');
             pokemon2.vida = pokemon2.vida - ae(pokemon1.tipo, pokemon2.tipo, pokemon1.atk2);
-            msjefe(tf);
-            msjnoefe(tf);
             const np = document.createElement('p');
             np.innerHTML = `Pokemon 1 <b>${pokemon1.nombre}</b> uso <b>${pokemon1.natk2}</b> Daño: ${ae(pokemon1.tipo, pokemon2.tipo, pokemon1.atk2)}<p>Pokemon 2 vida restante: ${pokemon2.vida}</p><hr>`;
             logP.insertAdjacentElement('beforeend', np);
             if (pokemon2.vida > 0) {
                 turno2 = getRandomInt(1, 3);
-                atkp2(turno2);
+            }
+            if (turno2 == 1 && pokemon2.vida) {
+                pokemon1.vida = pokemon1.vida - placaje(pokemon2.atk1);
+                const np = document.createElement('p');
+                np.innerHTML = `Pokemon 2 <b>${pokemon2.nombre}</b> uso <b>${pokemon2.natk1}</b> Daño: ${placaje(pokemon2.atk1)}<p>Pokemon 1 vida restante ${pokemon1.vida}</p><hr>`;
+                logP.insertAdjacentElement('beforeend', np);
+                var turno2 = 0;
+            }
+            if (turno2 == 2 && pokemon2.vida) {
+                pokemon1.vida = pokemon1.vida - ae(pokemon2.tipo, pokemon1.tipo, pokemon2.atk2);
+                const np = document.createElement('p');
+                np.innerHTML = `Pokemon 2 <b>${pokemon2.nombre}</b> uso <b>${pokemon2.natk2}</b> Daño: ${ae(pokemon2.tipo, pokemon2.tipo, pokemon2.atk2)}<p>Pokemon 1 vida restante: ${pokemon1.vida}</p><hr>`;
+                logP.insertAdjacentElement('beforeend', np);
+                var turno2 = 0;
             }
             if (pokemon2.vida <= 0) {
                 const np = document.createElement('p')
