@@ -114,21 +114,25 @@ function placaje(pla) {
 
 function msjefe(tf) {
     if (tf == 2) {
+        setTimeout(()=>{
         const logP = document.getElementById('log');
         const np = document.createElement('p');
-        np.innerHTML = `<hr><b>EL ATAQUE ES MUY EFECTIVO</b>`;
+        np.innerHTML = `<hr><b>EL ATAQUE ES MUY EFECTIVO</b><hr>`;
         logP.insertAdjacentElement('beforeend', np);
-    }
+    },400);
+}
 }
 
 
 function msjnoefe(tf) {
     if (tf == 1) {
+        setTimeout(()=>{
         const logP = document.getElementById('log');
         const np = document.createElement('p');
-        np.innerHTML = `<hr><b>EL ATAQUE NO ES MUY EFECTIVO</b>`;
+        np.innerHTML = `<hr><b>EL ATAQUE NO ES MUY EFECTIVO</b><hr>`;
         logP.insertAdjacentElement('beforeend', np);
-    }
+    },400);
+}
 }
 
 //Fin efectivo o no mensaje
@@ -192,19 +196,23 @@ function atkp2(t) {
     const logP = document.getElementById('log');
     if (t == 1 && pokemon2.vida > 0) {
         pokemon1.vida = pokemon1.vida - placaje(pokemon2.atk1);
+        setTimeout(()=>{
         const np = document.createElement('p');
         np.innerHTML = `Pokemon 2 <b>${pokemon2.nombre}</b> uso <b>${pokemon2.natk1}</b> Daño: ${placaje(pokemon2.atk1)}<p>Pokemon 1 vida restante ${pokemon1.vida}</p><hr>`;
         logP.insertAdjacentElement('beforeend', np);
+        },400);
     }
     if (t == 2 && pokemon2.vida > 0) {
         pokemon1.vida = pokemon1.vida - ae(pokemon2.tipo, pokemon1.tipo, pokemon2.atk2);
-        msjefe(tf);
-        msjnoefe(tf);
+        setTimeout(()=>{
         const np = document.createElement('p');
         np.innerHTML = `Pokemon 2 <b>${pokemon2.nombre}</b> uso <b>${pokemon2.natk2}</b> Daño: ${ae(pokemon2.tipo, pokemon2.tipo, pokemon2.atk2)}<p>Pokemon 1 vida restante: ${pokemon1.vida}</p><hr>`;
         logP.insertAdjacentElement('beforeend', np);
-    }
+    },400);
+    msjefe(tf);
+    msjnoefe(tf);
 }
+    }
 
 //fin ataques poke2
 
@@ -215,6 +223,35 @@ duelo = document.getElementById("duelo");
 duelo.addEventListener("click", Clog);
 duelo.addEventListener("click", batalla);
 
+function victoria(){
+    setTimeout(()=>{
+        Swal.fire({
+            background: '#0a5706',
+            color: 'white',
+            title: 'Victoria!',
+            text: 'Tu Pokemon ha ganado el duelo',
+            imageUrl: './img/ash_v.jpg',
+            imageWidth: 300,
+            imageHeight: 250,
+            imageAlt: 'Victoria',
+          })
+        }, 2000)
+}
+
+function derrota(){
+    setTimeout(()=>{
+        Swal.fire({
+            background: '#570606',
+            color: 'white',
+            title: 'Derrota',
+            text: 'Tu Pokemon ha sido derrotado',
+            imageUrl: './img/ash_d.jpg',
+            imageWidth: 300,
+            imageHeight: 250,
+            imageAlt: 'Derrota',
+          })
+    }, 2000)
+}
 
 function Clog() {
     const logP = document.getElementById('log');
@@ -246,16 +283,22 @@ function batalla() {
                 atkp2(turno2);
             }
             if (pokemon2.vida <= 0) {
+                setTimeout(()=>{
                 const np = document.createElement('p')
                 np.innerHTML = `Ganador Pokemon 1 <b>${pokemon1.nombre}</b>`;
                 np.innerHTML = `Pokemon 2 <b>${pokemon2.nombre}</b> no puede seguir luchando`;
                 logP.insertAdjacentElement('beforeend', np);
+            }, 700)
+                victoria();
             } else if (pokemon1.vida <= 0) {
+                setTimeout(()=>{
                 const np = document.createElement('p')
                 np.innerHTML = `Ganador Pokemon 2 <b>${pokemon2.nombre}</b>`;
                 np.innerHTML = `Pokemon 1 <b>${pokemon1.nombre}</b> no puede seguir luchando`;
                 logP.insertAdjacentElement('beforeend', np);
-            }
+            }, 700)
+                derrota();
+        }
         } else {
             const np = document.createElement('p')
             np.innerHTML = `<b>DUELO FINALIZADO</b>`;
@@ -279,15 +322,21 @@ function batalla() {
                 atkp2(turno2);
             }
             if (pokemon2.vida <= 0) {
+                setTimeout(()=>{
                 const np = document.createElement('p')
                 np.innerHTML = `Ganador Pokemon 1 <b>${pokemon1.nombre}</b>`;
                 np.innerHTML = `Pokemon 2 <b>${pokemon2.nombre}</b> no puede seguir luchando`;
                 logP.insertAdjacentElement('beforeend', np);
+            }, 700)
+                victoria();
             } else if (pokemon1.vida <= 0) {
+                setTimeout(()=>{
                 const np = document.createElement('p')
                 np.innerHTML = `Ganador Pokemon 2 <b>${pokemon2.nombre}</b>`;
                 np.innerHTML = `Pokemon 1 <b>${pokemon1.nombre}</b> no puede seguir luchando`;
                 logP.insertAdjacentElement('beforeend', np);
+            }, 700)
+                derrota();
             }
         } else {
             const np = document.createElement('p')
