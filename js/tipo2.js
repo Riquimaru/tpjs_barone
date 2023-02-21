@@ -119,7 +119,7 @@ function msjefe(tf) {
         const np = document.createElement('p');
         np.innerHTML = `<hr><b>EL ATAQUE ES MUY EFECTIVO</b><hr>`;
         logP.insertAdjacentElement('beforeend', np);
-    },400);
+    },500);
 }
 }
 
@@ -131,7 +131,7 @@ function msjnoefe(tf) {
         const np = document.createElement('p');
         np.innerHTML = `<hr><b>EL ATAQUE NO ES MUY EFECTIVO</b><hr>`;
         logP.insertAdjacentElement('beforeend', np);
-    },400);
+    },500);
 }
 }
 
@@ -200,7 +200,7 @@ function atkp2(t) {
         const np = document.createElement('p');
         np.innerHTML = `Pokemon 2 <b>${pokemon2.nombre}</b> uso <b>${pokemon2.natk1}</b> Daño: ${placaje(pokemon2.atk1)}<p>Pokemon 1 vida restante ${pokemon1.vida}</p><hr>`;
         logP.insertAdjacentElement('beforeend', np);
-        },400);
+        },500);
     }
     if (t == 2 && pokemon2.vida > 0) {
         pokemon1.vida = pokemon1.vida - ae(pokemon2.tipo, pokemon1.tipo, pokemon2.atk2);
@@ -208,9 +208,10 @@ function atkp2(t) {
         const np = document.createElement('p');
         np.innerHTML = `Pokemon 2 <b>${pokemon2.nombre}</b> uso <b>${pokemon2.natk2}</b> Daño: ${ae(pokemon2.tipo, pokemon2.tipo, pokemon2.atk2)}<p>Pokemon 1 vida restante: ${pokemon1.vida}</p><hr>`;
         logP.insertAdjacentElement('beforeend', np);
-    },400);
+    },500);
     msjefe(tf);
     msjnoefe(tf);
+
 }
     }
 
@@ -235,7 +236,7 @@ function victoria(){
             imageHeight: 250,
             imageAlt: 'Victoria',
           })
-        }, 2000)
+        }, 2500)
 }
 
 function derrota(){
@@ -250,7 +251,7 @@ function derrota(){
             imageHeight: 250,
             imageAlt: 'Derrota',
           })
-    }, 2000)
+    }, 2500)
 }
 
 function Clog() {
