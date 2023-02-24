@@ -27,3 +27,24 @@ function registrar() {
     console.log(entx);
     localStorage.setItem('Entrenador', entx);
 }
+
+//API Pokemon
+listpok = document.getElementById('listpok');
+fetch('https://pokeapi.co/api/v2/pokemon?limit=9&offset=0')
+    .then((resp) => resp.json())
+    .then((dato) => {
+        for (let ele of dato["results"]){
+            let pokeinf = document.createElement('div');
+            pokeinf.className = 'col-12 col-md-4 p-2'
+            let pokecard = document.createElement('div')
+            pokecard.className = 'card text-white bg-dark'
+            pokecard.innerHTML = `
+            <img src="./img/lista/${ele.name}.png">
+            <hr><p>Nombre: ${ele.name}</p>
+            `
+            listpok.appendChild(pokeinf);
+            pokeinf.appendChild(pokecard);
+        }
+    })
+
+//Fin API Pokemon
